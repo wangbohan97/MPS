@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Someone's Blog</title>
+</head>
+<body>
+    <h1>Hello, Blog World ~</h1>
+</body>
+</html>
