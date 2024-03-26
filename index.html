@@ -1,10 +1,644 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Someone's Blog</title>
+    <meta charset="utf-8">
+    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+    <!-- Replace the content tag with appropriate information -->
+    <!-- <meta name="description" content="DESCRIPTION META TAG"> -->
+    <meta property="og:title"
+        content="Learning Multi-dimensional Human Preference for Text-to-Image Generation" />
+    <!-- <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" /> -->
+    <meta property="og:url" content="https://wangbohan97.github.io/MPS/" />
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+    <meta property="og:image" content="static/images/banner.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+
+    <!-- <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+    <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG"> -->
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+    <!-- <meta name="twitter:image" content="static/images/your_twitter_banner_image.png"> -->
+    <!-- <meta name="twitter:card" content="summary_large_image"> -->
+    <!-- Keywords for your paper to be indexed by-->
+    <!-- <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Learning Multi-dimensional Human Preference for Text-to-Image Generation</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.1.1/gradio.js"></script>
 </head>
+
+
 <body>
-    <h1>Hello, Blog World ~</h1>
+
+
+    <section class="hero banner">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title"><i class="ParaDiffusion-icon"></i><br />
+                            Paragraph-to-Image Generation with Information-Enriched Diffusion Model</h1>
+                        <div class="is-size-5 publication-authors">
+                            <!-- Paper authors -->
+                            <span class="author-block">
+                                Sixian Zhang<sup>*</sup>,</span>
+                            <span class="author-block">
+                                Bohan Wang<sup>*</sup>,</span>
+                            <span class="author-block">
+                                Junqiang Wu<sup>*</sup>,</span>
+                            <span class="author-block">
+                                Yan Li<sup>‡</sup>,</span>
+                            <span class="author-block">
+                                Tingting Gao,</span>
+                            <span class="author-block">
+                                Di Zhang,</span>
+                            <span class="author-block">
+                                Zhongyuan Wang,</span>
+                            <span class="author-block">
+                                Tingting Gao</span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Kuaishou Technology</span>
+                            
+                            <span class="eql-cntrb"><small><br><sup>*</sup>Equal contribution. </small></span>
+                            <span class="eql-cntrb"><small><br><sup>‡</sup>Corresponding author. </small></span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="https://wangbohan97.github.io/MPS/" target="_blank"   
+                                        class="external-link button is-normal is-rounded is-white">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="https://github.com/wangbohan97/MPS" target="_blank"
+                                        class="external-link button is-normal is-rounded is-white">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                
+                                <span class="link-block">
+                                    <a href="https://wangbohan97.github.io/MPS/" target="_blank"
+                                        class="external-link button is-normal is-rounded is-white">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image carousel -->
+    <!-- <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="static/images/WX20231124-1228032x.png" alt="carousel1" />
+                        </div>
+                        <div class="card-content has-text-centered">A peaceful scene of a small town in winter, with snow-covered houses and trees around.
+                            The town is surrounded by mountains, and the sky is covered in clouds, creating a solemn atmosphere. In the foreground,
+                            there is a boat docked on the river, with the boat itself covered in snow. The water surface of the river is calm,
+                            reflecting the houses and trees in the distance. The roofs of the houses are covered in snow, and the windows are lit up,
+                            emitting a warm yellow light. The branches of the trees are also covered in snow, with the tips of the branches showing
+                            the blue-white color of the snow. The sky is blue, with some clouds drifting, and the sun is setting, casting a soft orange
+                            glow on the horizon. The entire scene is filled with the beauty of winter, evoking the feeling of tranquility and warmth.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="static/images/WX20231124-1228032x.png" alt="carousel2" />
+                        </div>
+                        <div class="card-content has-text-centered">A bedroom with dark-colored walls and a black ceiling. On
+                            the far right of the room, there is a large window that allows natural light to fill the space. The center of the
+                            room shows a cozy bed, which has several pillows on it in various colors, including brown, white, gray, and
+                            orange. Surrounding the bed are small items, including a suitcase, creating a cozy atmosphere. To its left, there
+                            is a chair placed near the edge of the wall. In addition, several paintings can be seen hanging on the wall above
+                            the bed, adding artistic touches to this comfortable space. Beside the bed, there is a gray-white cabinet with a
+                            table lamp on top. To the left of the cabinet, there is a small black table.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="static/images/WX20231124-1228032x.png" alt="carousel3" />
+                        </div>
+                        <div class="card-content has-text-centered">A
+                            beautiful scene of a stream and
+                            mountains. On the left, there is
+                            a meadow covered with green
+                            grass and yellow flowers. Along
+                            the edge of this meadow, there
+                            are many rocks scattered around.
+                            In the middle of the picture,
+                            there is a clear blue river that
+                            flows gently through the entire
+                            length of the scene. There is an
+                            ice-covered mountain. The
+                            sunlight shines on these
+                            mountains from below,
+                            illuminating them in red and
+                            orange colors.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="static/images/WX20231124-1228032x.png" alt="carousel4" />
+                        </div>
+                        <div class="card-content has-text-centered">A landscape photo with a lake as the main subject. Towering mountains
+                            stand in the distance, covered with dense green vegetation. At the foot of
+                            the mountain, near the river, there is a simple small house with a black
+                            tile roof and white walls. A wide river with crystal clear water and the
+                            sky reflected in the water. On the river, there is a boat moored there.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="static/images/WX20231124-1228032x.png" alt="carousel5" />
+                        </div>
+                        <div class="card-content has-text-centered">A train with smoke is traveling on the snowy tracks, surrounded by a winter forest. The train is black
+                            and has three yellow lights on its front. There are many white clouds of steam coming out from the
+                            top of the train. In the picture, you can see the track covered in white snow, as well as trees that
+                            have turned silver-white due to the frost. The sky above is grayish-white.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="static/images/WX20231124-1228032x.png" alt="carousel6" />
+                        </div>
+                        <div class="card-content has-text-centered">A natural landscape painting with white clouds floating in the blue sky. There are several mountains
+                            below with some plants growing on the mountains. There is a sea below the mountains. There is a house
+                            made of stone and wood on the shore. There are many green plants next to the house.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="static/images/WX20231124-1228032x.png" alt="carousel7" />
+                        </div>
+                        <div class="card-content has-text-centered">An anime landscape photo. A yellow car is parked on a dirt road
+                            with some luggage on the roof. There is a telephone pole next to
+                            the car. In the background are rolling mountains and snow-covered
+                            peaks. In the foreground is a grassland and a few trees, and Some
+                            red farmhouses.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="static/images/WX20231124-1228032x.png" alt="carousel8" />
+                        </div>
+                        <div class="card-content has-text-centered">A landscape photo of people. The main subject is a tree in the
+                            center of the castle. A man in white is sitting on a bench under
+                            the tree. There are rolling mountains in the distance. The
+                            mountains are covered with trees. Clouds and mist surround the
+                            mountain peaks. The clouds in the sky are very gray.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- End image carousel -->
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Current metrics for text-to-image models typically rely
+                            on statistical metrics which inadequately represent the real
+                            preference of humans. Although recent works attempt to
+                            learn these preferences via human annotated images, they
+                            reduce the rich tapestry of human preference to a single
+                            overall score. However, the preference results vary when
+                            humans evaluate images with different aspects. There-
+                            fore, to learn the multi-dimensional human preferences,
+                            we propose the Multi-dimensional Preference Score (MPS),
+                            the first multi-dimensional preference scoring model for
+                            the evaluation of text-to-image models. The MPS intro-
+                            duces the preference condition module upon CLIP model
+                            to learn these diverse preferences. It is trained based on
+                            our Multi-dimensional Human Preference (MHP) Dataset,
+                            which comprises 918,315 human preference choices across
+                            4 dimensions (i.e., aesthetics, semantic alignment, detail
+                            quality and overall assessment) on 607,541 images. The im-
+                            ages are generated by a wide range of latest text-to-image
+                            models. The MPS outperforms existing scoring methods
+                            across 3 datasets in 4 dimensions, enabling it a promising
+                            metric for evaluating and improving text-to-image genera-
+                            tion. The model and dataset will be made publicly available
+                            to facilitate future research.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End paper abstract -->
+    
+<!--    <section class="hero is-small">-->
+<!--        <div class="hero-body">-->
+<!--            <div class="container is-centered has-text-centered">-->
+<!--                <h2 class="title is-3">Online Demo</h2>-->
+<!--                <gradio-app src="https://pixart-alpha-pixart-alpha.hf.space" style="display: flex; justify-content: center;"></gradio-app>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!---->
+<!--    <section class="hero is-small">-->
+<!--        <div class="hero-body">-->
+<!--            <div class="container is-max-desktop">-->
+<!--                <h2 class="title is-3">Training Efficiency</h2>-->
+<!--                <p>Comparisons of CO<sub>2</sub> emissions and training cost among T2I generators. PIXART-&alpha;-->
+<!--                    achieves an exceptionally low training cost of $26,000. Compared to RAPHAEL, our CO<sub>2</sub>-->
+<!--                    emissions-->
+<!--                    and training costs are merely 1.1% and 0.85%, respectively.-->
+<!--                </p>-->
+<!--                <img loading="lazy" src="static/images/efficiency.svg" alt="efficiency" />-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    -->
+<!--    <section class="hero is-small">-->
+<!--        <div class="hero-body">-->
+<!--            <div class="container is-max-desktop">-->
+<!--                <h2 class="title is-3">ControlNet</h2>-->
+<!--                <h2>ControlNet customization samples from PIXART-&alpha;. We use the reference images to-->
+<!--                    generate the corresponding HED edge images and use them as the control signal for PIXART-&alpha;-->
+<!--                    ControlNet.-->
+<!--                </h2>-->
+<!--                <img loading="lazy" src="static/images/controlnet/controlnet_huawei.svg" alt="huawei" />-->
+<!--                <img loading="lazy" src="static/images/controlnet/controlnet_lenna.svg" alt="lenna" />-->
+<!--                <!-- <img loading="lazy" src="static/images/controlnet/controlnet_iclr.svg" alt="iclr" /> -->-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3">Dataset: Annotation Interface</h2>
+                <h2>
+                    Annotators are required to
+                    evaluate the preference for the given image pair on four dimensions, including aesthetics, detail quality (detail), semantic alignment (alignment) and overall score (overall)). 
+                    Annotation scores are discrete values ranging from 1 to 5, which are subsequently normalized to Boolean values of 0 or 1. When the scores are tied, the normalized score is set to 0.5
+                </h2>
+                <img loading="lazy" src="static/images/Frame 7_page-0001.jpg" alt="dog" />
+<!--                <img loading="lazy" src="static/images/pipeline.png" alt="Wenjie M5" />-->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3">Model Structure: Multi-dimensional Preference Prediction</h2>
+                <h2>The MPS takes the generated image, prompt and
+                    preference condition as the input, and predicts the quality (i.e. hu-
+                    man preference) of the generated image under the given preference
+                    condition
+                </h2>
+                <img loading="lazy" src="static/images/framework_page-0001.jpg" alt="dog" />
+<!--                <img loading="lazy" src="static/images/pipeline.png" alt="Wenjie M5" />-->
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3">New Eval Prompts: ParaPrompts-400</h2>
+                <h2>The current test prompts focus on short text-to-image
+                    generation, ignoring the evaluation for paragraph-to-image
+                    generation, we introduced a new evaluation set of prompts
+                    called ParaPrompts, including 400 long-text descriptions.
+                    
+                    
+                </h2>
+                <h2>
+                    The previous prompts testing was mostly concentrated
+                    on text alignments within the range of 0-25 words,
+                    while our prompts extend to long-text alignments of 100
+                    words or more.
+                </h2>
+                <img loading="lazy" src="static/images/WX20231124-195321@2x.png" alt="dog" />
+<!--                <img loading="lazy" src="static/images/pipeline.png" alt="Wenjie M5" />-->
+            </div>
+        </div>
+    </section> -->
+    
+    
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3">More Samples</h2>
+                <div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="modal-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                                <img loading="lazy" src="static/images/supp_demos_page-0001.jpg" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample1">
+                                <img loading="lazy" src="static/images/supp_demos_page-0001.jpg" alt="sample1" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="modal-sample2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/supp_demos_page-0002.jpg" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample2">
+                                <img loading="lazy" src="static/images/supp_demos_page-0002.jpg" alt="sample2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="modal-sample2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/supp_demos_page-0003.jpg" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample3">
+                                <img loading="lazy" src="static/images/supp_demos_page-0003.jpg" alt="sample3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="modal-sample2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/supp_demos_page-0004.jpg" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample4">
+                                <img loading="lazy" src="static/images/supp_demos_page-0004.jpg" alt="sample4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+<!--                <div class="columns is-centered has-text-centered">-->
+<!--                    <div class="column">-->
+<!--                        <div id="modal-sample3" class="modal">-->
+<!--                            <div class="modal-background"></div>-->
+<!--                            <div class="modal-content">-->
+<!--                                <img loading="lazy" src="static/images/samples/3.png" />-->
+<!--                            </div>-->
+<!--                            <button class="modal-close is-large" aria-label="close"></button>-->
+<!--                        </div>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-image js-modal-trigger" data-target="modal-sample3">-->
+<!--                                <img loading="lazy" src="static/images/samples/3.png" alt="sample3" />-->
+<!--                            </div>-->
+<!--                            <div class="card-content">A dog that has been meditating all the time</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="column">-->
+<!--                        <div id="modal-sample4" class="modal">-->
+<!--                            <div class="modal-background"></div>-->
+<!--                            <div class="modal-content">-->
+<!--                                <img loading="lazy" src="static/images/samples/4.png" />-->
+<!--                            </div>-->
+<!--                            <button class="modal-close is-large" aria-label="close"></button>-->
+<!--                        </div>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-image js-modal-trigger" data-target="modal-sample4">-->
+<!--                                <img loading="lazy" src="static/images/samples/4.png" alt="sample4">-->
+<!--                            </div>-->
+<!--                            <div class="card-content">A snowy mountain</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="columns is-centered has-text-centered">-->
+<!--                    <div class="column">-->
+<!--                        <div id="modal-sample5" class="modal">-->
+<!--                            <div class="modal-background"></div>-->
+<!--                            <div class="modal-content">-->
+<!--                                <img loading="lazy" src="static/images/samples/5.png" />-->
+<!--                            </div>-->
+<!--                            <button class="modal-close is-large" aria-label="close"></button>-->
+<!--                        </div>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-image js-modal-trigger" data-target="modal-sample5">-->
+<!--                                <img loading="lazy" src="static/images/samples/5.png" alt="sample5" />-->
+<!--                            </div>-->
+<!--                            <div class="card-content">A worker that looks like a mixture of cow and horse is working-->
+<!--                                hard to type code</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="column">-->
+<!--                        <div id="modal-sample6" class="modal">-->
+<!--                            <div class="modal-background"></div>-->
+<!--                            <div class="modal-content">-->
+<!--                                <img loading="lazy" src="static/images/samples/6.png" />-->
+<!--                            </div>-->
+<!--                            <button class="modal-close is-large" aria-label="close"></button>-->
+<!--                        </div>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-image js-modal-trigger" data-target="modal-sample6">-->
+<!--                                <img loading="lazy" src="static/images/samples/6.png" alt="sample6">-->
+<!--                            </div>-->
+<!--                            <div class="card-content">Half human, half robot, repaired human</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="columns is-centered has-text-centered">-->
+<!--                    <div class="column">-->
+<!--                        <div id="modal-sample7" class="modal">-->
+<!--                            <div class="modal-background"></div>-->
+<!--                            <div class="modal-content">-->
+<!--                                <img loading="lazy" src="static/images/samples/7.png" />-->
+<!--                            </div>-->
+<!--                            <button class="modal-close is-large" aria-label="close"></button>-->
+<!--                        </div>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-image js-modal-trigger" data-target="modal-sample7">-->
+<!--                                <img loading="lazy" src="static/images/samples/7.png" alt="sample7" />-->
+<!--                            </div>-->
+<!--                            <div class="card-content">knolling of a drawing tools for painter</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="column">-->
+<!--                        <div id="modal-sample8" class="modal">-->
+<!--                            <div class="modal-background"></div>-->
+<!--                            <div class="modal-content">-->
+<!--                                <img loading="lazy" src="static/images/samples/8.png" />-->
+<!--                            </div>-->
+<!--                            <button class="modal-close is-large" aria-label="close"></button>-->
+<!--                        </div>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-image js-modal-trigger" data-target="modal-sample8">-->
+<!--                                <img loading="lazy" src="static/images/samples/8.png" alt="sample8">-->
+<!--                            </div>-->
+<!--                            <div class="card-content">Van Gogh painting of a teacup on the desk</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <!-- <div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="modal-sample9" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/9.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample9">
+                                <img loading="lazy" src="static/images/9.png" alt="sample9" />
+                            </div>
+                            <div class="card-content">A young man wearing a black leather jacket and tie stood behind an old door, his gaze firmly fixed on the camera. The door had patterns of leaves and flowers on it, revealing a yellow background. His hair was casually curled and he appeared to be deep in thought or contemplating something.</div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="modal-sample10" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/10.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample10">
+                                <img loading="lazy" src="static/images/10.png" alt="sample10">
+                            </div>
+                            <div class="card-content">A close-up photo of a person. The subject is a woman. She wore a blue coat with a gray dress underneath. She has blue eyes and blond hair, and wears a pair of earrings. Behind are blurred city buildings and streets.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="modal-sample11" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/11.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample11">
+                                <img loading="lazy" src="static/images/11.png" alt="sample11" />
+                            </div>
+                            <div class="card-content">
+                                A close-up picture of people and scenery. The subject is a middle-aged man. A man in gray clothing is standing on a rock by the sea. He is wearing a black hat. The man has his hands inserted into the pockets of the gray clothing. The background is the vast ocean and sky, with a few white clouds in the sky.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="modal-sample12" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/12.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample12">
+                                <img loading="lazy" src="static/images/12.png" alt="sample12">
+                            </div>
+                            <div class="card-content">
+                                A woman wearing a blue dress and a black hat with red flowers on her head. The background is the famous Eiffel Tower in Paris, France. There are many people around the Eiffel Tower, some walking or standing, and there are also cars parked below. In addition to the main lady, there are other pedestrians scattered throughout the scene.
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!--BibTex citation -->
+<!--    <section class="section" id="BibTeX">-->
+<!--        <div class="container is-max-desktop content">-->
+<!--            <h2 class="title">BibTeX</h2>-->
+<!--            <pre><code>@misc{chen2023pixartalpha,-->
+<!--    title={PixArt-$\alpha$: Fast Training of Diffusion Transformer for Photorealistic Text-to-Image Synthesis}, -->
+<!--    author={Junsong Chen and Jincheng Yu and Chongjian Ge and Lewei Yao and Enze Xie and Yue Wu and Zhongdao Wang and James Kwok and Ping Luo and Huchuan Lu and Zhenguo Li},-->
+<!--    year={2023},-->
+<!--    eprint={2310.00426},-->
+<!--    archivePrefix={arXiv},-->
+<!--    primaryClass={cs.CV}-->
+<!--}</code></pre>-->
+<!--        </div>-->
+<!--    </section>-->
+    <!--End BibTex citation -->
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This page was built using the <a
+                                href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                            You are free to borrow the of this website, we just ask that you link back to this page in
+                            the footer. <br> This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                        <p class="has-text-centered">Total clicks: <span id="busuanzi_value_site_pv"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Statcounter tracking code -->
+
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
 </body>
+
 </html>
