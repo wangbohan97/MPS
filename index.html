@@ -263,45 +263,104 @@
     </section>
     <!-- End paper abstract -->
     
-<!--    <section class="hero is-small">-->
-<!--        <div class="hero-body">-->
-<!--            <div class="container is-centered has-text-centered">-->
-<!--                <h2 class="title is-3">Online Demo</h2>-->
-<!--                <gradio-app src="https://pixart-alpha-pixart-alpha.hf.space" style="display: flex; justify-content: center;"></gradio-app>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <table align="center" border="1" cellpadding="10" cellspacing="5" width="1000">
+                    <caption><h2 class="title is-4">Comparisons of text-to-image models quality databases</h2></caption>
+                    <tr>
+                        <!-- <th width="80"></th> -->
+                        <td rowspan="2">Dataset</td>
+                        <td colspan="2">Prompt Collection</td>
+                        <td colspan="2">Image Generation</td>
+                        <td colspan="2">Preference Annotation</td>
+                    </tr>
+                    <tr>
+                        <td>Source</td>
+                        <td>Annotation</td>
+                        <td>Source</td>
+                        <td>Number</td>
+                        <td>Rating</td>
+                        <td>Dimension</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.baidu.com">DiffusionDB</a></td>
+                        <td>DiffusionDB</td>
+                        <td>×</td>
+                        <td>Diffusion(1)</td>
+                        <td>1,819,808</td>
+                        <td>0</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.baidu.com">AGIQA-1K</a></td>
+                        <td>DiffusionDB</td>
+                        <td>×</td>
+                        <td>Diffusion(2)</td>
+                        <td>1,080</td>
+                        <td>23,760</td>
+                        <td>Overall</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.baidu.com">PickScore</a></td>
+                        <td>Web Application</td>
+                        <td>×</td>
+                        <td>Diffusion(3)</td>
+                        <td>583,747</td>
+                        <td>583,747</td>
+                        <td>Overall</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.baidu.com">ImageReward</a></td>
+                        <td>DiffusionDB</td>
+                        <td>×</td>
+                        <td>Auto Regressive; Diffusion(6)</td>
+                        <td>136,892</td>
+                        <td>410,676</td>
+                        <td>Overall</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.baidu.com">HPS</a></td>
+                        <td>DiffusionDB</td>
+                        <td>×</td>
+                        <td>Diffusion(1)</td>
+                        <td>98,807</td>
+                        <td>98,807</td>
+                        <td>Overall</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.baidu.com">HPS v2</a></td>
+                        <td>DiffusionDB, COCO</td>
+                        <td>✓</td>
+                        <td>GAN; Auto Regressive; Diffusion, COCO(9)</td>
+                        <td>430,060</td>
+                        <td>798,090</td>
+                        <td>Overall</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.baidu.com">AGIQA-3K</a></td>
+                        <td>DiffusionDB</td>
+                        <td>×</td>
+                        <td>GAN; Auto Regressive; Diffusion(6)</td>
+                        <td>2,982</td>
+                        <td>125,244</td>
+                        <td>Overall; Alignment</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.baidu.com">MHP</a></td>
+                        <td>DiffusionDB, PromptHero, KOLORS, GPT4</td>
+                        <td>✓</td>
+                        <td>GAN; Auto Regressive; Diffusion(9)</td>
+                        <td>607,541</td>
+                        <td>918,315</td>
+                        <td>Aesthetics, Detail, Alignment, Overall</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    
 
-<!---->
-<!--    <section class="hero is-small">-->
-<!--        <div class="hero-body">-->
-<!--            <div class="container is-max-desktop">-->
-<!--                <h2 class="title is-3">Training Efficiency</h2>-->
-<!--                <p>Comparisons of CO<sub>2</sub> emissions and training cost among T2I generators. PIXART-&alpha;-->
-<!--                    achieves an exceptionally low training cost of $26,000. Compared to RAPHAEL, our CO<sub>2</sub>-->
-<!--                    emissions-->
-<!--                    and training costs are merely 1.1% and 0.85%, respectively.-->
-<!--                </p>-->
-<!--                <img loading="lazy" src="static/images/efficiency.svg" alt="efficiency" />-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
-<!--    -->
-<!--    <section class="hero is-small">-->
-<!--        <div class="hero-body">-->
-<!--            <div class="container is-max-desktop">-->
-<!--                <h2 class="title is-3">ControlNet</h2>-->
-<!--                <h2>ControlNet customization samples from PIXART-&alpha;. We use the reference images to-->
-<!--                    generate the corresponding HED edge images and use them as the control signal for PIXART-&alpha;-->
-<!--                    ControlNet.-->
-<!--                </h2>-->
-<!--                <img loading="lazy" src="static/images/controlnet/controlnet_huawei.svg" alt="huawei" />-->
-<!--                <img loading="lazy" src="static/images/controlnet/controlnet_lenna.svg" alt="lenna" />-->
-<!--                <!-- <img loading="lazy" src="static/images/controlnet/controlnet_iclr.svg" alt="iclr" /> -->-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
-<!--    -->
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container is-max-desktop">
