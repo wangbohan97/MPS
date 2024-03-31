@@ -391,10 +391,18 @@
         <div class="hero-body">
             <div class="container is-max-desktop">
                 <h2 class="title is-3">Model Structure: Multi-dimensional Preference Prediction</h2>
-                <h2>The MPS takes the generated image, prompt and
-                    preference condition as the input, and predicts the quality (i.e. hu-
-                    man preference) of the generated image under the given preference
-                    condition
+                <h2>
+
+                    To learn human preferences, we propose the Multi-dimensional Preference Score (MPS), a unified model capable of predicting scores under various preference conditions.
+                    <br>
+                    (1) a certain preference is denoted by a series of descriptive words. For instance, the `aesthetic' condition is decomposed into words such as `light', `color', and `clarity' to describe the attributes of this condition.
+                    <br>
+                    (2) These attribute words are used to compute similarities with the prompt, resulting in a similarity matrix that reflects the correspondence between words in the prompt and the specified condition.
+                    <br>
+                    (3) Features from images and text are extracted using a pre-trained vision-language model. Subsequently, two modalities are fused through a multimodal cross-attention layer. 
+                    <br>
+                    (4) The similarity matrix serves as a mask merged into the cross-attention layer, which ensures that the text only related to the condition is attended to by the visual modality. Then the fused features are used to predict the preference scores.
+
                 </h2>
                 <img loading="lazy" src="static/images/framework_page-0001.jpg" alt="dog" />
 <!--                <img loading="lazy" src="static/images/pipeline.png" alt="Wenjie M5" />-->
