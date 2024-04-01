@@ -440,7 +440,20 @@
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container is-max-desktop">
-                <h2 class="title is-3">More Samples</h2>
+                <h2 class="title is-3">Visualization Results</h2>
+                <h2>
+                    The visualization results indicate that our HPS attends to different regions of prompts
+                    and images depending on the specific preference condition.
+                    This is attributed to the condition mask, which allows only those words in 
+                    the prompt related to the preference condition to be observed by the image. 
+                    The condition mask ensures that the model predicts the preference with different inputs, 
+                    and the model only needs to calculate the similarity between patches in the image 
+                    and the retained partial prompt to determine the final score. 
+                    Therefore, the selective focus enabled by the condition mask allows utilizing
+                    a unified model to predict multinational preferences effectively, 
+                    even if some preferences have weak correlations with others.
+                </h2>
+                <br>
                 <div class="columns is-centered has-text-centered">
                     <div class="column">
                         <div id="modal-sample1" class="modal">
